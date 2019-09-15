@@ -16,16 +16,16 @@ yargs.command({
     }
   },
   handler(argv) {
-    geocode(argv.location, (error, geoData) => {
+    geocode(argv.location, (error, { long, lat, location }) => {
       if (error) {
         return console.log(error);
       }
-      forecast(geoData.long, geoData.lat, (error, forecastData) => {
+      forecast({ long, lat }, (error, { msg }) => {
         if (error) {
           return console.log(error);
         }
-        console.log(geoData.location);
-        console.log(forecastData.msg);
+        console.log(location);
+        console.log(msg);
       });
     });
   }
