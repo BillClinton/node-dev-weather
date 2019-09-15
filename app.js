@@ -6,7 +6,6 @@ const placeName = 'Philadelphia,Pa';
 //const placeName = 'asdsadsa';
 
 const mapApiKey = config.mapApiKey;
-//'pk.eyJ1IjoiYmNsaW50b24iLCJhIjoiY2swazhpbjc0MGowOTNibzI2d25wMG4wZyJ9.CL4r9LkECXKFzEyJ2FkM_A';
 const mapUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${placeName}.json?access_token=${mapApiKey}`;
 
 request({ url: mapUrl, json: true }, (error, response) => {
