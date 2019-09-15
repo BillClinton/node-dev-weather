@@ -1,11 +1,15 @@
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
 
-geocode('Philadelphia', (error, data) => {
-  console.log('Error', error);
-  console.log('Data', data);
-  forecast(data.long, data.lat, (error, data) => {
-    console.log('Error', error);
-    console.log('Data', data);
+geocode('Philadelphia', (error, geoData) => {
+  if (error) {
+    return console.log(error);
+  }
+  forecast(geoData.long, geoData.lat, (error, forecastData) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log(geoData.location);
+    console.log(forecastData.msg);
   });
 });
